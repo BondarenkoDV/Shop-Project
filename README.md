@@ -1,8 +1,5 @@
 # Shop-Project
 
-# Онлайн магазин
-
-Описание
 ## Реализован следующий функционал:
 - Регистрация и аутентификация пользователя
 - Личный кабинет пользователя
@@ -18,17 +15,17 @@
 Склонируйте проект, для этого в терминале введите
 
 `gh repo clone BondarenkoDV/Shop-Project`
-Создайте виртуальное окружение
+### Создайте виртуальное окружение
 
 `python3 -m venv venv`
-## Активируйте его:
+### Активируйте его:
 
 `source ./venv/bin/activate`
-## Установите зависимости
+### Установите зависимости
 
 `pip install -r requirements.txt`
 
-В ShopSite/settings.py замените на свои значения
+### В ShopSite/settings.py замените на свои значения
 
 EMAIL_HOST
 DEBUG
@@ -40,13 +37,13 @@ POSTGRES_PORT
 EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD
 
-## Создайте миграции
+### Создайте миграции
 
 `python manage.py makemigrations`
 `python manage.py migrate`
-## Создайте superuser
+### Создайте superuser
 
 `python manage.py createsuperuser`
-## Запустите
+### Запустите
 
 `python manage.py runserver`
