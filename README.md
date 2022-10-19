@@ -12,7 +12,7 @@
 - Оплата товара через Stripe
 
 # Настройка
-Склонируйте проект, для этого в терминале введите
+### Склонируйте проект, для этого в терминале введите
 
 `gh repo clone BondarenkoDV/Shop-Project`
 ### Создайте виртуальное окружение
@@ -27,19 +27,20 @@
 
 ### В ShopSite/settings.py замените на свои значения
 
-EMAIL_HOST
-DEBUG
-POSTGRES_DB
-POSTGRES_USER
-POSTGRES_PASSWORD
-POSTGRES_HOST
-POSTGRES_PORT
-EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD
+- EMAIL_HOST
+- DEBUG
+- POSTGRES_DB
+- POSTGRES_USER
+- POSTGRES_PASSWORD
+- POSTGRES_HOST
+- POSTGRES_PORT
+- EMAIL_HOST_USER
+- EMAIL_HOST_PASSWORD
 
 ### Создайте миграции
 
 `python manage.py makemigrations`
+
 `python manage.py migrate`
 ### Создайте superuser
 
