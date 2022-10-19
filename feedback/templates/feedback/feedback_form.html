@@ -1,0 +1,23 @@
+{% extends "ShopApp/base.html" %}
+{% load static %}
+{% block categories %}
+{% endblock %}
+{% block content %}
+<div class="text-center d-flex justify-content-center" style="margin-top:10%;margin-bottom:10%;">
+    <form method="post" style="width:300px;">
+        {% csrf_token %}
+        {% for f in form %}
+        <div class="fieldWrapper">
+            <label for="{{ form.from_email.id_for_label }}">{{ f.label }}</label>
+            {{ f }}
+            {% if f.errors %}
+            <div class="alert alert-danger text-center my-1" role="alert"><p class="text-center">{{ f.errors }}</p></div>
+            {% else %}
+            <div></div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-secondary my-3">Отправить</button>
+    </form>
+</div>
+{% endblock %}

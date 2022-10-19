@@ -1,0 +1,43 @@
+li {
+    list-style-type: none;
+}
+ul {
+    padding-left: 0;
+}
+
+.text-scope {
+    color:black;
+    text-decoration: none;
+    display: inline-block;
+}
+.text-scope:hover {
+    color:black;
+    text-decoration: underline;
+    display: inline-block;
+}
+
+.product_description {
+    border-bottom: 2px solid maroon;
+    font-weight: normal;
+    padding-bottom: 5px;
+}
+.form-label {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 0.3px solid black;
+    border-radius: 5px;
+
+}
+
+.form-label:focus {
+    border: 1x solid #555;
+}
+
+.errorlist {
+    margin: 0 0;
+    padding: 0 0;
+    font-size:12px;
+    text-align: center;
+}

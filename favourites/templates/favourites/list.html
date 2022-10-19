@@ -1,0 +1,63 @@
+{% extends "ShopApp/base.html" %}
+{% load static %}
+{% block categories %}
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="col-md-12">
+        {% if empty %}
+        <div class="d-flex justify-content-center" style="margin-top:10%;margin-bottom:10%;">
+            <ul>
+                <li>
+                    <h1>Вы ничего не добавили в Избранное</h1>
+                </li>
+                <li class="text-center">
+                    <a href="{% url 'shop:home' %}" class="text-scope">Вернуться к покупкам</a>
+                </li>
+            </ul>
+        </div>
+        {% else %}
+        {% for item in favourites %}
+        {% with product=item.product %}
+        <div class="card mb-8" style="max-width:1100px; max-height:200px;">
+            <div class="row no-gutters">
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <img src="{{ product.image.url }}" class="card-img" style="width:100px;height:100px;">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5><a href="{{ product.get_absolute_url }}" class="card-title text-scope">{{ product.name }}</a>
+                        </h5>
+                        <p class="card-text">{{ product.price }}&#8381;</p>
+                        <ul class="nav col-md-6 mb-2 mb-md-0 d-flex justify-content-start">
+                            <li class="d-flex align-items-end">
+                                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                    <p style="display: none; height:0px; width:0px;">{{ cart_product_form }}</p>
+                                    {% csrf_token %}
+                                    <button type="submit"
+                                            style="border: none; outline: none; background: transparent; padding: 0 0;">
+                                        <p class="text-scope">Добавить в корзину</p><img
+                                            src="{% static 'ShopApp/image/cart.svg'%}"
+                                            style="margin-left:10px; width:20px;"></button>
+                                </form>
+                            </li>
+                            <li class="d-flex align-items-end">
+                                <form action="{% url 'favourites:remove_from_favourites' product.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit"
+                                            style="border: none; outline: none; background: transparent; padding: 0 0;">
+                                        <p class="text-scope">Убрать из избранного</p>
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endwith %}
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

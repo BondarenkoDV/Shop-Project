@@ -1,0 +1,13 @@
+{% extends 'payments/base_cancel_success.html' %}
+{{ title }}
+{% block message %}
+<ul>
+    <li class="list-group-item">
+        <h1>Что-то пошло не так</h1>
+        <p class="text-muted">Попробуйте заново</p>
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'shop:home'%}" style="color:black;">Вернуться на главную</a>
+    </li>
+</ul>
+{% endblock %}

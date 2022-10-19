@@ -1,0 +1,10 @@
+{% extends 'feedback/feedback_form.html' %}
+{% block content %}
+<div class="text-center" style="margin-top:18%;margin-bottom:20%;">
+    <h1>
+        Спасибо за обратную связь
+    </h1>
+    <p class="text-muted py-3">Постараемся ответить как можно быстрее</p>
+    <a href="{% url 'shop:home' %}" class="text-scope">На главную</a>
+</div>
+{% endblock %}

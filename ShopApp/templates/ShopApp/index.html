@@ -1,0 +1,40 @@
+{% extends 'ShopApp/base.html' %}
+{% block content %}
+{% load static %}
+<div class="col-lg-10 col-md-12 card-group">
+    {% for u in unit %}
+    {% if u.image %}
+    <div class="col-lg-4 col-md-6 col-sm-6 col-12 py-3 d-flex justify-content-center">
+        <div class="card" style="width:19rem; ">
+            <img src="{{ u.image.url }}" class="card-img-top" style="height:250px">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{ u.name }}</h5>
+                <p class="card-text text-center" style="font-weight:bold;">{{ u.price }} &#8381;</p>
+                <ul class="nav d-flex justify-content-center">
+                    <li style="margin-right:10px;">
+                        <a href="{{ u.get_absolute_url }}" class="btn btn-dark">Подробнее</a>
+                    </li>
+                    <li style="margin-right:10px;">
+                        <form action="{% url 'cart:cart_add' u.id %}" method="post">
+                            <p style="display: none; height:0px; width:0px;">{{ cart_product_form }}</p>
+                            {% csrf_token %}
+                            <button type="submit" style="border: none; outline: none; background: transparent;"><img
+                                    src="{% static 'ShopApp/image/cart.svg'%}" style="width:30px; height:40px;"></button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="{% url 'favourites:add_to_favourites' u.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" style="border: none; outline: none; background: transparent;"><img
+                                    src="{% static 'ShopApp/image/favourites.svg'%}" style="width:40px; height:40px;"></button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

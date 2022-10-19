@@ -1,0 +1,47 @@
+{% extends 'ShopApp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-lg-10 col-md-12">
+    <div class="col-lg-5 col-md-12 py-3 d-flex justify-content-center">
+        <img src="{{ product.image.url }}" alt="" style="width:300px; height:300px;">
+    </div>
+    <div class="col-lg-5 col-md-12 py-3">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h3>{{ product.name }}</h3></li>
+            <li class="list-group-item">Наличие:{% if product.available %} Есть в наличии{% else %} Нет в наличии{% endif %}
+            </li>
+            <li class="list-group-item"><p>Цена: {{ product.price }}&#8381;</p></li>
+            <li class="list-group-item">
+                <ul class="nav d-flex justify-content-start">
+                    <li>
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                    <p style="display: none; height:0px; width:0px;">{{ cart_product_form }}</p>
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-dark">
+                        Добавить в корзину
+                    </button>
+                </form>
+                        </li>
+                    <li>
+                <form action="{% url 'favourites:add_to_favourites' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" style="border: none; outline: none; background: transparent;">
+                        <button type="submit" style="border: none; outline: none; background: transparent;"><img
+                                src="{% static 'ShopApp/image/favourites.svg'%}" style="width:40px;"></button>
+                    </button>
+                </form>
+                    </li>
+                    </ul>
+            </li>
+            <li>
+
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-10 col-md-12 py-3">
+        <h4 class="product_description">Описание товара</h4>
+        <p style="font-size:14px;">{{ product.description }}</p>
+    </div>
+</div>
+
+{% endblock %}

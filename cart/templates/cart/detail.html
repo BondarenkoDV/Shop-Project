@@ -1,0 +1,75 @@
+{% extends "ShopApp/base.html" %}
+{% load static %}
+{% block categories %}
+{% endblock %}
+{% block content %}
+{% if cart.get_total_price == 0 %}
+        <div class="d-flex justify-content-center" style="margin-top:15%;margin-bottom:15%;">
+            <ul>
+                <li>
+                    <h1>Корзина пустая</h1>
+                </li>
+                <li class="text-center">
+                    <a href="{% url 'shop:home' %}" class="text-scope">Вернуться к покупкам</a>
+                </li>
+            </ul>
+        </div>
+{% else %}
+<ul class="list-group">
+    <li class="list-group-item"><h1>Корзина покупок</h1></li>
+    <li class="list-group-item"><p>Сумма к оплате: {{ cart.get_total_price }}&#8381;</p></li>
+</ul>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>Картинка</th>
+            <th>Товар</th>
+            <th></th>
+            <th>Количество</th>
+            <th>Цена за шт</th>
+            <th>Общая стоимость</th>
+            <th>Оплата</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+        {% with product=item.product %}
+        <tr>
+            <td><a href="{{ u.get_absolute_url }}" class="text-scope">{{ product.name }}</a></td>
+            <td>
+                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                    {% csrf_token %}
+                    {{ item.update_quantity_form.quantity }}
+                    {{ item.update_quantity_form.update.as_hidden }}
+                    <input type="submit" value="Добавить" class="btn btn-outline-secondary btn-sm">
+                </form>
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-secondary btn-sm"><a
+                        href="{% url 'cart:cart_remove' product.id %}" style="text-decoration: none; color: inherit;">Удалить</a>
+                </button>
+            </td>
+
+            <td>
+                {{ item.quantity }}
+
+            </td>
+            <td class="num">{{ item.price }}&#8381;</td>
+            <td class="num">{{ item.total_price }}&#8381;</td>
+            <td>
+                <form action="{% url 'payments:create-checkout-session' product.id %}" method="post">
+                    {% csrf_token %}
+                    <p style="display: none; height:0px; width:0px;">{{ item.update_quantity_form.quantity }}</p>
+                    <input type="submit" value="Оплата" class="btn btn-outline-secondary btn-sm">
+                </form>
+            </td>
+        </tr>
+        {% endwith %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

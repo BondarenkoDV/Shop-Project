@@ -1,0 +1,30 @@
+{% extends 'ShopApp/base_login_register.html' %}
+{% load static %}
+{% block auth %}
+<ul style="margin-top:5%;">
+    <li class="list-group-item">
+<h1 class="h3 mb-4 fw-normal">Регистрация</h1>
+    </li>
+<li class="list-group-item">
+<form method="post" style="width:300px; " class="text-center">
+    {% csrf_token %}
+    {% for f in form %}
+    <div class="fieldWrapper">
+        <label for="{{ form.from_email.id_for_label }}">{{ f.label }}</label>
+        {{ f }}
+        {% if f.errors %}
+        <div class="alert alert-danger text-center my-1" role="alert"><p class="text-center">{{ f.errors }}</p>
+        </div>
+        {% else %}
+        <div></div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="w-100 my-3 btn btn-lg btn-primary">Зарегистрироваться</button>
+</form>
+</li>
+<p class="mt-3 text-scope"><a href="{% url 'shop:login'%}" class="text-scope">Уже зарегистрированы? Войти</a></p>
+<p class="mt-1"><a href="{% url 'shop:home' %}" class="text-scope">На главную</a></p>
+<p class="mt-5 mb-3 text-muted">© bondarenkodv</p>
+</ul>
+{% endblock %}

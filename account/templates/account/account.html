@@ -1,0 +1,17 @@
+{% extends "ShopApp/base.html" %}
+{% load static %}
+{% block categories %}
+{% endblock %}
+{% block content %}
+<div class="col-md-12 d-flex justify-content-center">
+<div class="d-flex justify-content-center">
+    <ul style="margin-top:40%;margin-bottom:40%;">
+        <h4 style="margin-top:20px;">Личный кабинет</h4>
+        <li style="margin-top:10px;">Аккаунт пользователя: {{ user.username }}</li>
+        <li style="margin-top:10px;">Имя пользователя: {{ user.first_name }}</li>
+        <li style="margin-top:10px;">Фамилия пользователя: {{ user.last_name }}</li>
+        <li style="margin-top:10px;">Email пользователя: {{ user.email }}</li>
+    </ul>
+</div>
+</div>
+{% endblock %}

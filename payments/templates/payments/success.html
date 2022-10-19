@@ -1,0 +1,12 @@
+{% extends 'payments/base_cancel_success.html' %}
+{% block message %}
+<ul>
+    <li class="list-group-item">
+        <h1>Спасибо за покупку!</h1>
+        <p class="text-muted">Всегда рады вам</p>
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'shop:home'%}" style="color:black;">Продолжить покупки</a>
+    </li>
+</ul>
+{% endblock %}
