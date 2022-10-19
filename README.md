@@ -1,9 +1,9 @@
-#Shop-Project
+# Shop-Project
 
-#Онлайн магазин
+# Онлайн магазин
 
 Описание
-##Реализован следующий функционал:
+## Реализован следующий функционал:
 - Регистрация и аутентификация пользователя
 - Личный кабинет пользователя
 - Отображение товаров
@@ -14,19 +14,19 @@
 - Обратная связь с пользователем через почту
 - Оплата товара через Stripe
 
-#Настройка
-Склонируйте проект
+# Настройка
+Склонируйте проект, для этого в терминале введите
 
-<gh repo clone BondarenkoDV/Shop-Project>
+`gh repo clone BondarenkoDV/Shop-Project`
 Создайте виртуальное окружение
 
-<python3 -m venv venv>
-##Активируйте его:
+`python3 -m venv venv`
+## Активируйте его:
 
-<source ./venv/bin/activate>
-##Установите зависимости
+`source ./venv/bin/activate`
+## Установите зависимости
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 В ShopSite/settings.py замените на свои значения
 
@@ -40,13 +40,13 @@ POSTGRES_PORT
 EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD
 
-##Создайте миграции
+## Создайте миграции
 
-<python manage.py makemigrations>
-<python manage.py migrate>
-##Создайте superuser
+`python manage.py makemigrations`
+`python manage.py migrate`
+## Создайте superuser
 
-<python manage.py createsuperuser>
-##Запустите
+`python manage.py createsuperuser`
+## Запустите
 
-<python manage.py runserver>
+`python manage.py runserver`
